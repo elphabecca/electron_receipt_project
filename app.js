@@ -1,18 +1,3 @@
-// 'use strict';
-
-// var app = require('app');
-// var BrowserWindow = require('browser-window');
-
-// var mainWindow = null;
-
-// app.on('ready', function() {
-//     mainWindow = new BrowserWindow({
-//         height: 600,
-//         width: 800
-//     });
-
-//     mainWindow.loadUrl('file://' + __dirname + 'index.html');
-// });
 
 var electron = require('electron') // http://electron.atom.io/docs/api
 var path = require('path')         // https://nodejs.org/api/path.html
@@ -28,10 +13,12 @@ electron.app.once('ready', function () {
     width: 400,
     // Set the initial height to 400px
     height: 600,
-    // Don't show the window until it ready, this prevents any white flickering
+    // Don't show the window until it ready (prevents any flickering)
     show: false,
     // Don't allow the window to be resized.
     resizable: true,
+    // Take away the frame so it "hovers"
+    frame: false
   })
 
   // Load a URL in the window to the local index.html path
@@ -45,5 +32,16 @@ electron.app.once('ready', function () {
   window.once('ready-to-show', function () {
     window.show()
   })
+
+const {ipcMain} = require('electron')
+ipcMain.on('asynchronous-message', (event, arg) => {
+  console.log(arg); // prints "ping"
+  event.sender.send('asynchronous-reply', 'pong');
+});
+
+ipcMain.on('synchronous-message', (event, arg) => {
+  console.log(arg); // prints "ping"
+  event.returnValue = 'pong';
+});
 
 })
