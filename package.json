@@ -1,0 +1,14 @@
+{
+  "name": "divide-receipts",
+  "version": "1.0.0",
+  "description": "Divide Receipts",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron app.js"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.4.12",
+    "electron-prebuilt": "^1.4.13"
+  }
+}
