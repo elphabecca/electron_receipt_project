@@ -2,9 +2,9 @@
   "name": "divide-receipts",
   "version": "1.0.0",
   "description": "Divide Receipts",
-  "main": "app.js",
+  "main": "main.js",
   "scripts": {
-    "start": "electron app.js"
+    "start": "electron main.js"
   },
   "license": "ISC",
   "devDependencies": {

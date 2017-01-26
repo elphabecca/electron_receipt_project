@@ -2,6 +2,7 @@
 var electron = require('electron') // http://electron.atom.io/docs/api
 var path = require('path')         // https://nodejs.org/api/path.html
 var url = require('url')           // https://nodejs.org/api/url.html
+const {ipcMain} = require('electron')
 
 var window = null
 
@@ -28,24 +29,31 @@ electron.app.once('ready', function () {
     slashes: true
   }))
 
-  window.on('closed', () => {
-    window = null
-  })
+  console.log("You are @main.js")
+
+  window.openDevTools();
 
   // Show window when page is ready
   window.once('ready-to-show', function () {
     window.show()
   })
 
-const {ipcMain} = require('electron')
-ipcMain.on('asynchronous-message', (event, arg) => {
-  console.log(arg); // prints "ping"
-  event.sender.send('asynchronous-reply', 'pong');
-});
-
-ipcMain.on('synchronous-message', (event, arg) => {
-  console.log(arg); // prints "ping"
-  event.returnValue = 'pong';
-});
-
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

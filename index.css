@@ -3,3 +3,7 @@ body {
     height: 100%;
     -webkit-app-region: drag;
 }
+
+#close-button {
+    -webkit-app-region: no-drag;
+}
