@@ -18,6 +18,8 @@ electron.app.once('ready', function () {
     show: false,
     // Don't allow the window to be resized.
     resizable: true,
+    // For window dragging
+    transparent: true,
     // Take away the frame so it "hovers"
     frame: false
   })
