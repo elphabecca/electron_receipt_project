@@ -1,14 +1,15 @@
+'use strict';
 
-$(function () {
-
+function load() {
+   console.log("IN INDEX.JS")
     const {ipcRenderer} = require('electron');
+    var closeEl = document.querySelector('#close-button');
 
-    console.log("pandas");
+    closeEl.addEventListener('click', function () {
+        console.log("DUDE");
+    }); 
+};
 
-    $('#close-button').on('click', function(evt) {
-        console.log('OMFG');
-    })
-}
 
 
 
