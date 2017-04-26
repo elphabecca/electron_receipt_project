@@ -1,6 +1,7 @@
 html, body {
     height: 100%;
     -webkit-app-region: drag;
+    background: blue;
 }
 
 #close-button {

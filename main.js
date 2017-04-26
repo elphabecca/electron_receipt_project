@@ -41,21 +41,3 @@ electron.app.once('ready', function () {
   })
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
