@@ -28,10 +28,6 @@ electron.app.once('ready', function () {
     slashes: true
   }))
 
-  window.on('closed', () => {
-    window = null
-  })
-
   // Show window when page is ready
   window.once('ready-to-show', function () {
     window.show()
@@ -41,11 +37,6 @@ const {ipcMain} = require('electron')
 ipcMain.on('asynchronous-message', (event, arg) => {
   console.log(arg); // prints "ping"
   event.sender.send('asynchronous-reply', 'pong');
-});
-
-ipcMain.on('synchronous-message', (event, arg) => {
-  console.log(arg); // prints "ping"
-  event.returnValue = 'pong';
 });
 
 })
