@@ -41,13 +41,13 @@ electron.app.once('ready', function () {
   });
 
   ipcMain.on('asynchronous-message', (event, arg) => {
-  console.log(arg, 'in asynchronous-message');  // prints "ping"
-  event.sender.send('asynchronous-reply', 'pong');
+  console.log(arg, 'in asynchronous-message', new Date());  // prints "ping"
+  event.sender.send('asynchronous-reply', 'pong ASYNC');
   });
 
-  ipcMain.on('synchronous-message', (event, arg) => {
-  console.log(arg, 'in synchronous-message');  // prints "ping"
-  event.returnValue = 'pong in synchronous message';
-  });
+  // ipcMain.on('synchronous-message', (event, arg) => {
+  // console.log(arg, 'in synchronous-message', new Date());  // prints "ping"
+  // event.returnValue = 'pong SYNC in synchronous message' + new Date ();
+  // });
 
   });
