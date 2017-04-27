@@ -41,8 +41,8 @@ electron.app.once('ready', function () {
   });
 
   ipcMain.on('asynchronous-message', (event, arg) => {
-  console.log(arg, 'in asynchronous-message', new Date());  // prints "ping"
-  event.sender.send('asynchronous-reply', 'pong ASYNC');
+  console.log(arg, 'in asynchronous-message', new Date());  // prints "ping" from index.js
+  event.sender.send('asynchronous-reply', 'pong ASYNC'); // sends "pong ASYNC" to index.js
   });
 
   // ipcMain.on('synchronous-message', (event, arg) => {
