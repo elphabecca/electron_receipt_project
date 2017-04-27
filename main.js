@@ -1,8 +1,8 @@
 
-var electron = require('electron') // http://electron.atom.io/docs/api
-var path = require('path')         // https://nodejs.org/api/path.html
-var url = require('url')           // https://nodejs.org/api/url.html
-const {ipcMain} = require('electron')
+var electron = require('electron'); // http://electron.atom.io/docs/api
+var path = require('path');         // https://nodejs.org/api/path.html
+var url = require('url');           // https://nodejs.org/api/url.html
+const {ipcMain} = require('electron');
 
 var window = null
 
@@ -22,22 +22,32 @@ electron.app.once('ready', function () {
     transparent: true,
     // Take away the frame so it "hovers"
     frame: false
-  })
+  });
 
   // Load a URL in the window to the local index.html path
   window.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
-  }))
+  }));
 
-  console.log("You are @main.js")
+  console.log("You are @main.js");
 
   window.openDevTools();
 
   // Show window when page is ready
   window.once('ready-to-show', function () {
-    window.show()
-  })
+    window.show();
+  });
 
-})
+  ipcMain.on('asynchronous-message', (event, arg) => {
+  console.log(arg);  // prints "ping"
+  event.sender.send('asynchronous-reply', 'pong');
+  });
+
+  ipcMain.on('synchronous-message', (event, arg) => {
+  console.log(arg);  // prints "ping"
+  event.returnValue = 'pong';
+  });
+
+  });
